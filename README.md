@@ -9,3 +9,5 @@ Run:
 `pytest --localize bitcount bitcount_test.py`
 
 To see more sepcific usage, visit: https://github.com/hchasestevens/fault-localization
+
+![image](https://user-images.githubusercontent.com/68514251/125785524-8be3ea0f-2d0d-4160-85d4-ff0301898416.png)
