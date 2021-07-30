@@ -2,12 +2,18 @@ from find_in_sorted import find_in_sorted
 import json
 import sys
 import pytest
+import os
+
 
 name = "find_in_sorted"
+
+path = os.getcwd()
+
 # def test_bitcoun():
 
 def get_data():
-    working_file = open("/Users/wuyuxuan/research-local/QuixBugs/json_testcases/"+name+".json", 'r')
+    pathold = os.path.abspath(os.path.join(path, os.pardir))
+    working_file = open(pathold + "/json_testcases/"+name+".json", 'r')
 
     for line in working_file:
         py_testcase = json.loads(line)

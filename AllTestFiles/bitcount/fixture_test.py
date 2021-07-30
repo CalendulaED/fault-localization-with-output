@@ -2,12 +2,15 @@ from bitcount import bitcount
 import json
 import sys
 import pytest
+import os
 
-
+path = os.getcwd()
+name = "bitcount"
 # def test_bitcoun():
 
 def get_data():
-    working_file = open("/Users/wuyuxuan/research-local/QuixBugs/json_testcases/"+"bitcount"+".json", 'r')
+    pathold = os.path.abspath(os.path.join(path, os.pardir))
+    working_file = open(pathold + "/json_testcases/"+name+".json", 'r')
 
     for line in working_file:
         py_testcase = json.loads(line)
