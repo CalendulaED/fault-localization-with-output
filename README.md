@@ -17,4 +17,4 @@ To see more sepcific usage, visit: https://github.com/hchasestevens/fault-locali
 ![image](https://user-images.githubusercontent.com/68514251/125785524-8be3ea0f-2d0d-4160-85d4-ff0301898416.png)
 
 
-Double lick RunALL file to run all current available test file and generate their corresponding results.
+Double click RunALL file to run all current available test file and generate their corresponding results.
