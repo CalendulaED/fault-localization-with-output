@@ -40,6 +40,9 @@ def generate_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
 
     max_score = line_scores[ranked_lines[0]]
     min_score = min(line_scores.values())
+    diff = max_score - min_score
+    if diff == 0:
+        diff = 0.001
 
     out_buffer = collections.defaultdict(set)
 
@@ -86,7 +89,8 @@ def generate_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
                 line=line,
                 ansi_tag=rgb_to_hex(
                     int(
-                        (line.score - min_score) / (max_score - min_score) * 255
+                        # (line.score - min_score) / (max_score - min_score) * 255
+                        (line.score - min_score) / (diff) * 255
                     ), 0, 0
                 )
                 # TODO - want to actually represent this in HSV space and go from neutral green/orange to red - see also http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html#background-colors
