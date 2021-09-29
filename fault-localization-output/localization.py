@@ -44,3 +44,4 @@ def calc_scores(line_executions=LINE_EXECUTIONS, prior=PRIOR):
         )
         for line, execution_counts in line_executions.items()
     }
+
