@@ -6,9 +6,9 @@ import csv
 
 import pytest
 
-from fault_localization.tracing import TRACER
-from fault_localization.localization import update_executions, calc_scores
-from fault_localization.display import generate_output, generatefile_output
+from fault_localization_output.tracing import TRACER
+from fault_localization_output.localization import update_executions, calc_scores
+from fault_localization_output.display import generate_output, generatefile_output
 
 
 LOCALIZATION_DIR = None
