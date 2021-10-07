@@ -58,7 +58,7 @@ def generate_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
 
         output_lines = (
             OutputLine(
-                num=line_no + 1,
+                num=line_no,
                 content=line,
                 score=round(line_scores.get((fname, line_no), 0), 2)
             )
@@ -66,14 +66,15 @@ def generate_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
                 line_no - line_context,
                 line_no + line_context + 1
             )
-            if line_no >= 0
+            if line_no > 0
             for line in try_get_line(line_no)
         )
 
-        # print(output_lines)
-
         out_buffer_key = '\x1b[1m{}\x1b[0m'.format(os.path.relpath(fname, os.getcwd()))
         for line in output_lines:
+            # print("____________")
+            # print(line)
+            # line.num = line.num-1
             out_buffer[out_buffer_key].add(line)
 
     out_buffer_sequence = sorted(
@@ -121,7 +122,7 @@ def generatefile_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
 
         output_lines = (
             OutputLine(
-                num=line_no + 1,
+                num=line_no,
                 content=line,
                 score=round(line_scores.get((fname, line_no), 0), 2)
             )
@@ -129,7 +130,7 @@ def generatefile_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
                 line_no - line_context,
                 line_no + line_context + 1
             )
-            if line_no >= 0
+            if line_no > 0
             for line in try_get_line(line_no)
         )
 
