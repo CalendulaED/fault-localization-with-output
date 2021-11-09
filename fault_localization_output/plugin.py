@@ -43,6 +43,7 @@ def pytest_runtest_call(item):
 
 def pytest_runtest_makereport(item, call):
     failed = bool(getattr(call, 'excinfo', False))
+    # print(failed)
     update_executions(
         lines=TRACER.flush_buffer(),
         failed=failed
@@ -54,13 +55,18 @@ def pytest_terminal_summary(terminalreporter):
         return
     abs_localization_dir = os.path.abspath(LOCALIZATION_DIR)
 
+    # get number of pass and failed
+    # print('passed amount: ', len(terminalreporter.stats['passed']))
+    print('failed amount: ', len(terminalreporter.stats['failed']))
+    numOfFailed = len(terminalreporter.stats['failed'])
+
     terminalreporter.section("Fault Localization Results")
     line_scores = {
         (path, line): score
-        for (path, line), score in calc_scores().items()
+        for (path, line), score in calc_scores(numOfFailed).items()
         if path.startswith(abs_localization_dir)
     }
-    # print(line_scores)
+    print(line_scores)
     # for line in generate_output(line_scores, n_lines=N_LINES):
     #     print(line)
     list = []
@@ -70,6 +76,8 @@ def pytest_terminal_summary(terminalreporter):
         # print(output_line)
         list.append(output_line.split())
     list.pop(0)
+    # print("************")
+    # print(list)
     # path = '/Users/wuyuxuan/research-local/pytest_simple_example/'
     with open('result.csv', 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
